@@ -16,20 +16,20 @@ def drop_low_info_columns(df, k = 17):
 def drop_object_columns(df):
   df = df.copy()
   df = df.drop(columns=['Accesinternet', # Probabil nu conteaza
-                   'Altespatiiutile', 
-                   'Amenajarestrazi',
-                   'Bucatarie',
-                   'Climatizare', # Posibil are o influenta
+                   'Altespatiiutile', # Probabil influenteaza, unele atribute au valoarea "Terasa", la care cineva s-ar uita si ar pune pretul mai mic / mai mare
+                   'Amenajarestrazi', # Pierdem mult aici, unele au "De pamant" ceea ce duce pretul in jos.
+                   'Bucatarie', # Mobilata / Utilata / Partial mobilata
+                   'Climatizare', # Posibil are o influenta, dar avem prea putine cu acest field
                    'Contorizare', # Nu are influenta atat de mare
                    'Diverse', # Greu sa faci regresie liniara pe "diverse"
-                   'Dotariimobil',
-                   'Electrocasnice',
-                   'Ferestrecugeamtermopan',
-                   'Izolatiitermice', # Probabil are influenta, de asta pierdem puncte
-                   'Mobilat', # Conteaza mult < pierdem puncte
-                   'Nr.balcoane',
-                   'Nr.bucătării',
-                   'Nr.locuriparcare',
+                   'Dotariimobil', # Lift, gradina, piscina (important)
+                   'Electrocasnice', # Relevant
+                   'Ferestrecugeamtermopan', # Prea putine exemple
+                   'Izolatiitermice', # Doar exterior / interior
+                   'Mobilat', # Conteaza mult < pierdem puncte (putem incerca One-Hot encoding), 20.000 lipsa
+                   'Nr.balcoane', # Conteaza
+                   'Nr.bucătării', # Conteaza
+                   'Nr.locuriparcare', # Conteaza
                    'Pereti', # Probabil ca unii se uita si la asta
                    'Podele',
                    'Regimînălţime',
